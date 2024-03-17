@@ -5,7 +5,7 @@ var axios = require('axios')
 
 function writeMovie(movie){
     str =`
-    <h1> Title: ${movie.title} </h1>
+    <h1> Movie: ${movie.title} </h1>
     <h3> Release year: ${movie.year} </h3>
     <p> Cast </p>
     <ul>
@@ -26,7 +26,7 @@ function writeMovie(movie){
 
 function writeActor(actor){
     str =`
-    <h1> Title: ${actor.name} </h1>
+    <h1> Name: ${actor.name} </h1>
     <p> Movies </p>
     `
     if (actor.hasOwnProperty('movies')){
@@ -42,7 +42,7 @@ function writeActor(actor){
 
 function writeGenre(genre){
     str = `
-    <h1> Title: ${genre.name} </h1>
+    <h1> Genre: ${genre.name} </h1>
     <ul>
     `
     genre.movies.forEach((movie) =>{
