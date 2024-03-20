@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Compositor Record Updated: #{c.id}
+  pre= JSON.stringify(c) 
+  a(href="/") Return
+
+
