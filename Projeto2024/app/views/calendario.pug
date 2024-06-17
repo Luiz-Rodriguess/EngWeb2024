@@ -1,0 +1,175 @@
+extends layout
+
+block content
+  script.
+    
+    let weekdays = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sábado"]
+    let months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+    let opt = ["days","weeks","months"]
+    let today = new Date()
+    let month = today.getMonth()
+    let year = today.getFullYear()
+    let auxMonth = 0
+    let auxDay = 0
+    var activePopup 
+    var eventos = !{JSON.stringify(eventos)}
+    var weekly = !{JSON.stringify(weekly)}
+
+    function clear(){
+      for (let i=0;i<6;i++){
+        for(let j=0;j<7;j++){
+          id = `#day${i}${j}`
+          $(id).text("")
+          id = `#event${i}${j}`
+          $(id).text("")
+          id = `#popup-event${i}${j}`
+          $(id).empty()
+          id = `#cell${i}${j}`
+          $(id).addClass("hidden")
+          $(id).removeClass("today")
+        }
+      }
+    }
+    function eventTemplate(e){
+      return `<div>
+        <p>(${e.uc}) ${e.nome}: ${e.local} ${e.hora} ${e.turno? `(${e.turno})` : ""}</p>
+      </div>`
+    }
+    function renderDay(){
+      clear()
+      let d = new Date(year,month+auxMonth,1)
+      let localMonth = d.getMonth()
+      let auxCol = d.getDay()
+      let localYear = d.getFullYear()
+      let lastMonthDay = new Date(localYear,localMonth+1,0).getDate()
+      console.log(lastMonthDay)
+      let auxRow = 0
+
+      let monthEvents = eventos.filter((e)=>{
+        return e.mes === localMonth && e.ano === localYear
+      })
+
+      let monthWeeklyEvents = weekly.filter((e)=>{
+        return e.ano === localYear
+      })
+
+      for (let i=1;i<=lastMonthDay;i++){
+        id = `#day${auxRow}${auxCol}`
+        $(id).text(i)
+        id = `#cell${auxRow}${auxCol}`
+        $(id).toggleClass("hidden")
+        if (i === today.getDate() && localMonth === month && localYear === year){
+          $(id).toggleClass("today")
+        }
+        id = `#popup-event${auxRow}${auxCol}`
+        
+        for (let j=0;j<monthEvents.length;j++){
+          if (i == monthEvents[j].dia){
+            $(id).append(eventTemplate(monthEvents[j]))
+            monthEvents.splice(j)
+            j--
+          }
+        }
+
+        for (let j=0;j<monthWeeklyEvents.length;j++){
+          if (auxCol == monthWeeklyEvents[j].dia){
+            $(id).append(eventTemplate(monthWeeklyEvents[j]))
+          }
+        }
+        idEvent = `#event${auxRow}${auxCol}`
+        idPopup = `#popup-event${auxRow}${auxCol} > div`
+        let length = $(idPopup).length
+        if (length > 0){
+          $(idEvent).text(length+" items")  
+        }
+        auxCol++
+        if (auxCol == weekdays.length) {
+          auxCol = 0
+          auxRow++
+        }
+      }
+      $("#periodo").text(months[localMonth] + " " +localYear)
+    }
+    $(document).ready(function(){
+      renderDay()
+      $("#op1").click(function(){
+        auxMonth = 0
+        auxDay = 0
+        renderDay()
+      })
+      $("#op2").click(function(){
+        auxMonth--
+        renderDay()
+      })
+      $("#op3").click(function(){
+        auxMonth++
+        renderDay()
+      })
+      $(".cell-info").click(function(){
+        var cell = $(this).attr('id').replace(/[a-z]+/,"")
+        var id = "#popup-event" + cell;
+        $(id).prepend(`<p>${weekdays[parseInt(cell[1])]} - ${($(`#day${cell}`).text()).padStart(2,"0")} ${$("#periodo").text().replace(/\d+/,"")}</p>`)
+        activePopup = id
+        $($(id).parent()).toggleClass("popup-active")
+      })
+      $(".popup").click(function(){
+        id = activePopup
+        $(id+" p").first().remove()
+        $($(id).parent()).toggleClass("popup-active")
+      })
+
+      
+    })
+
+
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3 
+          a(href="/user")=utilizador.nome
+        h3 
+          a(href="/cursos") Cursos
+        h3#selected Calendário
+        h3 
+          a(href="/mensagens") Mensagens
+        h3 
+          a(href=`/ferramentas`) Ferramentas
+        h3 
+          a(href="/logout") Terminar Sessão
+    main#menu
+      #cursos-geral.white
+        #cursos-header  
+          ul.options
+            li(class="item" id="op1") Hoje
+          h3#periodo
+          ul.options
+            li(class="item" id="op2") &lt
+            li(class="item" id="op3") &gt
+        #cursos-main
+          table#calendario-table
+            thead
+              tr
+                th Dom
+                th Seg
+                th Ter
+                th Qua
+                th Qui
+                th Sex
+                th Sab
+            tbody
+              each val in [0,1,2,3,4,5]
+                tr
+                  each day in [0,1,2,3,4,5,6]
+                    td(id=`cell${val}${day}` class="standard")
+                      div(id=`day${val}${day}` class="cell-header")
+                      div(id=`event${val}${day}` class="cell-info")
+      #popup-background
+        each val in [0,1,2,3,4,5]
+          each day in [0,1,2,3,4,5,6]
+            .popup
+              div(id=`popup-event${val}${day}` class="events")
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

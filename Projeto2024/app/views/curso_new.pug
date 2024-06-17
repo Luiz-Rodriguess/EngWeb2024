@@ -1,0 +1,320 @@
+extends layout
+
+block content
+  script.
+    function avalNova(){
+      return `
+      <div class="content">
+      <label>Avaliação</label>
+      <input type="text" name="avaliacao" value=""></input>
+      <div id="aval${$("#avaliacao > .content").length}" class="close-button">X</div>
+      </div>
+      `
+    }
+    function docenteNovo(){
+      return `
+      <div class="content">
+      <label>Docente</label>
+      <input type="text" name="docentes" value=""></input>
+      <div id="docente${$("#docentes > .content").length}" class="close-button">X</div>
+      </div>
+      `
+    }
+    function sumarioNovo(i){
+      let name = $(`#sumario${i}0`).parent().find("input").attr("name")
+      return `
+      <div class="sum-div">
+        <div class="content">
+        <input class="sum-input-new" type="text" name="${name}" value=""></input>
+        <div id="sumario${i}${$(`#sumarios${i} > .sum-div`).length}" class="close-button">X</div>
+        </div>
+      </div>
+      `
+    }
+    function teoricaNova(){
+      return `
+      <div class="content">
+      <label>Teórica</label>
+      <input type="text" name="hTeoricas"></input>
+      <div id="teorica${$("#teoricas > .content").length}" class="close-button">X</div>
+      </div>
+      `
+    }
+    function praticaNova(){
+      return `
+      <div class="content">
+      <label>Prática</label>
+      <input type="text" name="hPraticas"></input>
+      <div id="pratica${$("#praticas > .content").length}" class="close-button">X</div>
+      </div>
+      `
+    }
+    function aulaNova(){
+      return `
+      <div id="nova-aula-div" class="curso-box">
+        <div class="content">
+          <label> Data </label>
+          <input type="date" name="data"></input>
+          <input type="radio" id="T" name="tipo" value="T"></input>
+          <label for="T"> T </label>
+          <input type="radio" id="P" name="tipo" value="P"></input>
+          <label for="P"> P </label>
+          <input type="radio" id="TP" name="tipo" value="TP"></input>
+          <label for="TP"> TP </label>
+        </div>
+        <div class ="content">
+          <label> Confirmar </label>
+          <div id="criar-aula" class="confirm-button"> &#10003
+        </div>
+      </div>
+      `
+    }
+    function novaAulaSumario(aulaId,tipo,data){
+      let length = $("#aulas > #aulas-aux > .aula-div").length
+      return `
+      <div class="aula-div curso-box">
+        <p><b>Id: </b>${aulaId} </p>
+        <p><b>Tipo: </b>${tipo} </p>
+        <p><b>Data: </b>${data} </p>
+        <div id="show-aula${length}" class="show-button">
+          <div class="flip-v"> Sumário </div>
+        </div>
+        <div id="aula-cancel${length}" class="close-button delete-sum">X</div>
+        <div id="aula${length}" class="aula-input">
+          <div id=${aulaId} class="div-with-id" >
+          <div id="sumarios${length}" class="sumario-input">
+            <div class="sum-div">
+              <div class="content">
+                <input class="sum-input-new" type="text" name=${aulaId} value=""></input>
+                <div id="sumario${length}0" class="close-button"> X </div>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            <div id="sum${length}" class="sum-novo">
+              <div class="confirm-button"> + </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      `
+    }
+
+    $(document).ready(function(){
+      
+      $(document).on("click",".show-button",function(){
+        id = $(this).attr("id")
+        if (id.includes("show-aulas")){
+          id = "#" + id
+          $("#aulas").toggle()
+        }else{
+          id = "#" + id
+          id =  "#aula" + $(this).attr("id").replace("show-aula","")
+          $(id).toggle()
+        }
+      })
+      $(document).on("click",".close-button",function(){
+        id = "#" + $(this).attr("id")
+        if (id.includes("sumario")){
+          $(this).closest(".sum-div").remove()  
+        }else if (id.includes("#aula-cancel")){
+          $(this).closest(".aula-div").remove()  
+        }else{
+          $(this).closest(".content").remove()
+        }
+      })
+      $(this).on("click","#aval-nova",function(){
+        $("#avaliacao").append(avalNova())
+      })
+      $(this).on("click","#docente-novo",function(){
+        $("#docentes").append(docenteNovo())
+      })
+      $(this).on("click","#pratica-nova",function(){
+        $("#praticas").append(praticaNova())
+      })
+      $(this).on("click","#teorica-nova",function(){
+        $("#teoricas").append(teoricaNova())
+      })
+      $(this).on("click","#aula-nova",function(){
+        $("#novas").append(aulaNova())
+      })
+      $(this).on("click","#criar-aula",function(){
+        let data = $("form").find("input[name='data']").val()
+        let tipo = $("form").find("input[name='tipo']:checked").val()
+        aulaId = $("#uc-id").val() + tipo + data
+        if (data && tipo){
+          let info = novaAulaSumario(aulaId,tipo,data)
+          $("#aulas-aux").append(info)
+          $("#nova-aula-div").remove()
+          $("#"+aulaId).trigger("change")
+        }
+      })
+      $(this).on("click",".sum-novo",function(){
+        i = $(this).attr("id").replace("sum","")
+        id = "#sumarios" + i
+        $(id).append(sumarioNovo(i))
+      })
+
+      novaInfo = {}
+
+      $(this).on("change","input[class='sum-input-new']", function(){
+        let name = $(this).attr("name")
+        let content = $(this).val()
+        console.log(name)
+        if (!novaInfo[name]){
+          novaInfo[name] = []
+        }
+        novaInfo[name].push(content)
+      })
+      $("form").on("submit",function(){
+        event.preventDefault()
+        ucId = $("#uc-id").val()
+        listaDeSumarios = []
+        listaParaRemover = []
+        $("#aulas > #aulas-aux > .aula-div").each(function(index){
+          let lista = []
+          input = ".aula-input > .sumario-input > .sum-div > .content > input"
+          
+          $(this).find(input).each(function(){
+            lista.push($(this).val())
+          })
+
+          input = ".aula-input > .div-with-id"
+          aulaId = $(this).find(input).attr("id")
+          
+          if (lista.length === 0){
+            lista = novaInfo[aulaId]
+          }
+
+          listaParaRemover.push(aulaId)
+          aux = aulaId.replace(ucId,"")
+          tipo = aux.replace(/[^A-Z]+/,"")
+          data = aux.replace(/[A-Z]+/,"")
+          let obj = {sumario:lista,aulaId:aulaId,tipo:tipo,data:data}
+          listaDeSumarios.push(obj)
+        })
+        for (let i = 0; i < listaParaRemover.length; i++) {
+          let selector = `input[name='${listaParaRemover[i]}']`;
+          $(this).find(selector).remove();
+        }
+        
+        selector = `input[name='teste']`;
+        teste = $(this).find(selector).val()
+        $(this).find(selector).remove()
+
+        selector = `input[name='exame']`;
+        exame = $(this).find(selector).val()
+        $(this).find(selector).remove()
+
+        selector = `input[name='projeto']`;
+        projeto = $(this).find(selector).val()
+        $(this).find(selector).remove()
+        
+        let datas = {teste:teste,exame:exame,projeto:projeto}
+
+        $('<input>').attr({
+            type: 'hidden',
+            name: 'aulas',
+            value: JSON.stringify(listaDeSumarios)
+        }).appendTo(this);
+        $('<input>').attr({
+            type: 'hidden',
+            name: 'datas',
+            value: JSON.stringify(datas)
+        }).appendTo(this);
+
+        this.submit()
+      })
+    })
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3 
+          a(href="/user")=utilizador.nome
+        h3#selected
+          a(href="/cursos") Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3 
+          a(href="/mensagens") Mensagens
+        h3 
+          a(href=`/ferramentas`) Ferramentas
+        h3 
+          a(href=`/logout`) Terminar Sessão
+    main#menu
+      #cursos-geral
+        #cursos-header
+          h1 Nova UC
+        #cursos-main
+          form(method="POST")
+            .curso-main-edit
+              .left-side
+                .content
+                  h2 Geral
+                .content
+                  label id
+                  input(id="uc-id" type="text" name="_id")
+                .content
+                  label Título
+                  input(type="text" name="titulo" )
+                #docentes
+                  .content
+                    label Docente
+                    input(type="text" name="docentes" )
+                    div(id=`docente0` class="close-button") X
+                .content
+                  label Novo Docente (Produtor)
+                  #docente-novo.confirm-button +
+                #avaliacao
+                  .content
+                    label Avaliação
+                    input(type="text" name="avaliacao")
+                    div(id=`aval0` class="close-button") X
+                .content
+                  label Nova Avaliação 
+                  #aval-nova.confirm-button +
+                .content
+                  label Teste
+                  input(type="text" name="teste")
+                .content
+                  label Exame
+                  input(type="text" name="exame")
+                .content
+                  label Projeto
+                  input(type="text" name="projeto")
+                .content
+                  h2 Horários
+                #teoricas
+                  .content
+                    label Teórica
+                    input(type="text" name="hTeoricas")
+                    div(id=`teorica0` class="close-button") X
+                .content
+                  label Novo Horário 
+                  #teorica-nova.confirm-button +
+                #praticas
+                  .content
+                    label Prática
+                    input(type="text" name="hPraticas")
+                    div(id=`pratica0` class="close-button") X
+                .content
+                  label Novo Horário 
+                  #pratica-nova.confirm-button +
+              .right-side
+                .content
+                  h2 Aulas
+                #aulas
+                  #aulas-aux
+                  #novas
+                  .content
+                    label Adicionar Aula
+                    #aula-nova.confirm-button +
+            .content
+              button(type="submit" class="save-button") Guardar
+        
+
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

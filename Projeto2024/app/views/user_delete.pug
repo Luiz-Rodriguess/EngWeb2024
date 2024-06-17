@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  script.
+    $(document).ready(function(){
+      $(".curso-box").on("click",function(){
+        let id = "#link" + $(this).attr("id").replace("user","")
+        $(id)[0].click()
+      })
+      $("#txtBusca").on("input",function(){
+        let input = $(this).val().toLowerCase()
+        $("#cursos-main > .curso-box").each(function (){
+          line = $(this).find(".id-content").text() + $(this).find(".name-content").text()
+          if (line.toLowerCase().includes(input)){
+            $(this).show()
+          }else{
+            $(this).hide()
+          }
+        })
+      })
+    })
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3
+          a(href="/user")=utilizador.nome
+        h3
+          a(href="/cursos") Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3 
+          a(href="/mensagens") Mensagens
+        h3#selected 
+          a(href=`/ferramentas`) Ferramentas
+        h3 
+          a(href="/logout") Terminar Sessão
+    main#menu
+      #cursos-geral
+        #cursos-header
+          h1 Utilizadores
+          
+          #divBusca
+            img(src='/images/lupa.png', alt='Procurar Curso...')
+            input#txtBusca(type='text', placeholder='Procurar Utilizador...')
+        #cursos-main
+          each user,index in utilizadores 
+            div(id=`user${index}` class="curso-box")
+              p.id-content 
+                b Id:
+                =user._id
+              p.name-content 
+                b Nome:
+                =user.nome
+            a.no-decoration(id=`link${index}` href=`/user/delete/${user._id}`)
+        #popup-background
+          .popup
+            .events-novo-curso
+              h4 Criar novo curso
+
+              form(action="/curso/new/json" method="POST" enctype="multipart/form-data")
+                div
+                  input(type="file" name="newUC" accept=".json")
+                div
+                  button(type="submit" class).novo-curso-button Novo Curso por Ficheiro
+              a.no-decoration(href="/curso/new").novo-curso-button Página de Criação Novo Curso
+              .close-button X
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

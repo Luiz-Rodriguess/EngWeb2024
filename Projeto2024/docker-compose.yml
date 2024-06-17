@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    depends_on:
+      - mongo-seed
+
+  mongo-seed:
+    image: mongo:latest
+    volumes:
+      - ./datasets:/datasets
+    command: >
+        bash -c "sleep 1 && 
+        mongoimport --host mongodb -d whiteboard -c mensagens --type json --file /datasets/mensagens.json --jsonArray &&
+        mongoimport --host mongodb -d whiteboard -c utilizadores --type json --file /datasets/utilizadores.json --jsonArray &&
+        mongoimport --host mongodb -d whiteboard -c uc --type json --file /datasets/uc.json --jsonArray"

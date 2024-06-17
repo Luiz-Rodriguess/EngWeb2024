@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3
+          a(href="/user")=utilizador.nome
+        h3 
+          a(href="/cursos") Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3 
+          a(href="/mensagens") Mensagens
+        h3#selected 
+          a(href=`/ferramentas`) Ferramentas
+        h3 
+          a(href="/logout") Terminar Sessão
+    main#menu
+      #user-geral
+        #user-foto
+          if utilizadorRem.foto != ""
+            img(src="/fileStore/profile/" + utilizadorRem.foto alt="logo")#logo
+          else
+            img(src="/images/no_profile2.png" alt="logo")#logo
+        #user-info
+          #user-edit-group
+            label id
+            input.no-pointer(type="text" name="_id" value=utilizador._id readonly)
+          #user-edit-group
+            label Nome
+            input.no-pointer(type="text" name="nome" value=utilizador.nome readonly)
+          #user-edit-group
+            label Categoria
+            input.no-pointer(type="text" name="categoria" value=utilizador.categoria readonly)
+          #user-edit-group
+            label Filiação
+            input.no-pointer(type="text" name="filiacao" value=utilizador.filiacao readonly)
+          #user-edit-group
+            label E-mail
+            input.no-pointer(type="text" name="email" value=utilizador.email readonly)
+            a(href="/user/edit" class="no-decoration") 
+          form(method="POST")
+            button(type="submit") Deletar
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

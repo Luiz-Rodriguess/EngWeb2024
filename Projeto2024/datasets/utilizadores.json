@@ -1,0 +1,101 @@
+[
+  {
+    "_id": "d0002",
+    "nome": "Tiago Manuel Queirós Barata",
+    "foto": "",
+    "categoria": "Professor Convidado",
+    "filiacao": "Dep. Informática - Universidade do Minho",
+    "email": "d13753@di.uminho.pt",
+    "ucs": [
+      "ENGWEB2024"
+    ],
+    "type": "produtor",
+    "token": null,
+    "time": null,
+    "pass": "$2a$10$Xj6IViAcscI8GOtT28e6YOB05tneFQZhrQqDEZR4nbT2zojk.FmKe"
+  },
+  {
+    "_id": "a100700",
+    "nome": "Luiz Felipe Passanezi Matteussi Rodrigues",
+    "foto": "a100700.png",
+    "categoria": "Aluno",
+    "filiacao": "Licenciatura em Engenharia Informática",
+    "email": "a100700@alunos.uminho.pt",
+    "webpage": "",
+    "ucs": [
+      "ENGWEB2024"
+    ],
+    "type": "consumidor",
+    "token": null,
+    "time": null,
+    "pass": "$2a$10$N2mG.8lEFmWx/hbUHgJts.V7/eplo6P.tqsNjA0i4XvtE3fpPpp4G"
+  },
+  {
+    "_id": "d0001",
+    "nome": "José Carlos Ramalho",
+    "foto": "",
+    "categoria": "Professor/Investigador/Empresário",
+    "filiacao": "Dep. Informática - Universidade do Minho",
+    "email": "jcr@di.uminho.pt",
+    "webpage": "http://www.di.uminho.pt/~jcr",
+    "ucs": [
+      "ENGWEB2024",
+      "ATP2023",
+      "RPCW2024"
+    ],
+    "type": "produtor",
+    "token": null,
+    "time": null,
+    "pass": "$2a$10$l4r3aFHxt0FxPDw6SsJD1eYME/12FqBN7BEzobjIAwbCULw/XzH/u"
+  },
+  {
+    "_id": "d0003",
+    "nome": "Luís Filipe Cunha",
+    "foto": "",
+    "categoria": "Professor Convidado",
+    "filiacao": "Dep. Informática - Universidade do Minho",
+    "email": "lfc@di.uminho.pt",
+    "webpage": "",
+    "ucs": [
+      "ATP2023"
+    ],
+    "type": "produtor",
+    "token": "ommddurj8qp",
+    "time": "2024-06-16T19:21:23.251Z",
+    "pass": "$2a$10$jzo1AvS71E0xOIC5Wncu6.qeW7j578KnqdBxWwtiu8mihJUyanTc2"
+  },
+  {
+    "_id": "a98566",
+    "nome": "Marco António Pereira Vieira",
+    "foto": "a98566.png",
+    "categoria": "Aluno",
+    "filiacao": "Licenciatura em Engenharia Informática",
+    "email": "a98566@alunos.uminho.pt",
+    "webpage": "",
+    "ucs": [
+      "ENGWEB2024"
+    ],
+    "type": "consumidor",
+    "token": null,
+    "time": null,
+    "pass": "$2a$10$FaaUh.HdjyLC1.Rz31eEiu0CglbS3rF2nQ8l88P3QymIqXcKO4Swe"
+  },
+  {
+    "_id": "admin",
+    "nome": "André Castro Oliveira",
+    "foto": "",
+    "categoria": "CEO",
+    "filiacao": "WhiteBoard inc.",
+    "email": "andrecoliveira@gmail.com",
+    "webpage": "",
+    "ucs": [
+      "ATP2023",
+      "ENGWEB2024",
+      "RPCW2024"
+    ],
+    "type": "admin",
+    "token": null,
+    "time": null,
+    "pass": "$2a$10$DYC7Bj1L8wikJU52OqxkPOT1s7QkDPlnCdYnb7XGakPK5lNqr3x7e"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "tipo" : "utilizador",
+    "remetente" : "admin",
+    "destinatario" : ["a100700"],
+    "conteudo" : "Mensagem de teste entre utilizadores",
+    "assunto" : "Geral",
+    "data" : "2024-06-15T20:12:37"
+  },
+  {
+    "tipo" : "grupo",
+    "remetente" : "d0001",
+    "destinatario" : ["ENGWEB2024"],
+    "conteudo" : "A entrega do projeto está agendada para 17/06/2024 às 23:59:59.",
+    "assunto" : "Geral",
+    "data" : "2024-06-15T20:14:13"
+  }
+]

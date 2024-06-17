@@ -1,0 +1,647 @@
+[
+  {
+    "_id": "RPCW2024",
+    "titulo": "Representa\u00e7\u00e3o e Processamento de Conhecimento na Web",
+    "docentes": [
+      "d0001"
+    ],
+    "avaliacao": [
+      "8 Trabalhos de casa (20%)",
+      "1 Projeto em grupo at\u00e9 3 elementos (35%)[nota m\u00ednima de 10 val.]",
+      "1 Teste escrito (45%)[nota m\u00ednima de 10 val.]"
+    ],
+    "datas": {
+      "teste": "???",
+      "exame": "???",
+      "projeto": "???"
+    },
+    "aulas": [
+      {
+        "tipo": "T",
+        "data": "2024-02-06",
+        "sumario": [
+          "Apresenta\u00e7\u00e3o da disciplina: [Link para o documento na cloud](https://docs.google.com/presentation/d/1Kt1WXyC-CCoMRcdaMINL93P9uFr6D616bi4JwpzBDuk/edit?usp=sharing)",
+          "Introdu\u00e7\u00e3o ao conceito de Ontologia: [Link para o documento na cloud](https://docs.google.com/presentation/d/1oIBC0F6Lc5rlEoRIDu-rqIE98ZOBNRNw3vChWtTO-EU/edit?usp=sharing)",
+          "Mapeamento de um modelo em JSON para uma Ontologia OWL.",
+          "Cria\u00e7\u00e3o de ontologias com o Prot\u00e9g\u00e9."
+        ],
+        "aulaId": "RPCW2024T2024-02-06"
+      },
+      {
+        "tipo": "TP",
+        "data": "2024-02-06",
+        "sumario": [
+          "Desenvolvimento de ontologias com o Prot\u00e9g\u00e9.",
+          "Processamento de ontologias no formato Turtle: TTL.",
+          "Resolu\u00e7\u00e3o de alguns exerc\u00edcios.",
+          "TPC1: 1) Descarregar o [dataset plantas.json](./datasets/plantas.json); 2) Analis\u00e1-lo; 3) Converter para TTL."
+        ],
+        "aulaId": "RPCW2024TP2024-02-06"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-02-20",
+        "sumario": [
+          "Desenvolvimento de ontologias com o Prot\u00e9g\u00e9: a tutorial da Pizza."
+        ],
+        "aulaId": "RPCW2024T2024-02-20"
+      },
+      {
+        "tipo": "TP",
+        "data": "2024-02-20",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de alguns exerc\u00edcios.",
+          "TPC2: 1) Descarregar o [dataset db.json](./datasets/db.json) correspondente a uma escola de m\u00fasica; 2) Analis\u00e1-lo; 3) Criar o modelo ontol\u00f3gico; 4) Povoar o modelo com os dados."
+        ],
+        "aulaId": "RPCW2024TP2024-02-20"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-02-27",
+        "sumario": [
+          "Introdu\u00e7\u00e3o ao SPARQL."
+        ],
+        "aulaId": "RPCW2024T2024-02-27"
+      },
+      {
+        "tipo": "TP",
+        "data": "2024-02-27",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de alguns exerc\u00edcios: Hist\u00f3ria de Portugal.",
+          "TPC3: 1) Descarregar o [dataset mapa-virtual.json](./datasets/mapa-virtual.json) correspondente a um mapa com liga\u00e7\u00f5es entre cidades; 2) Analis\u00e1-lo; 3) Criar o modelo ontol\u00f3gico; 4) Povoar o modelo com os dados."
+        ],
+        "aulaId": "RPCW2024TP2024-02-27"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-03-05",
+        "sumario": [
+          "[Tutorial do GraphDB](https://docs.google.com/presentation/d/16TjEwAGemjgGQ1c3inpaUBcB5vIwcZuvw-1f2DR-OO8/edit?usp=sharing), resolvendo as queries SPARQL pedidas;",
+          "Explica\u00e7\u00e3o sobre a API REST do GraphDB: Help/REST;",
+          "Como criar um servi\u00e7o web usando a API do GraphDB."
+        ],
+        "aulaId": "RPCW2024T2024-03-05"
+      },
+      {
+        "tipo": "TP",
+        "data": "2024-03-05",
+        "sumario": [
+          "Cria\u00e7\u00e3o de uma [App web para a Tabela Peri\u00f3dica](./apps/tabperiodica.zip).",
+          "TPC4: Tabela Peri\u00f3dica (completar a App desenvolvida na aula)",
+          "- elementos.html",
+          "1. Acrescentar c/ o grupo;",
+          "2. Grupo \u00e9 link para p\u00e1gina de grupo;",
+          "3. O na ou o nome s\u00e3o links para a p\u00e1gina do elemento;",
+          "- grupos.html",
+          "1. lista os grupos",
+          "- grupo.html",
+          "1. inform. do grupo;",
+          "2. lista de lementos.",
+          "- elemento.html",
+          "1. inform. do elemento."
+        ],
+        "aulaId": "RPCW2024TP2024-03-05"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-03-12",
+        "sumario": [
+          "Introdu\u00e7\u00e3o \u00e0 Linked Open Data: a DBPedia e outros.",
+          "[Tutorial sobre a DBpedia: queries SPARQL](https://docs.google.com/presentation/d/1JUllfe5QK2HMu_squPbLjXN88Nz3FedR72wber6USJ8/edit?usp=sharing);",
+          "Como extrair informa\u00e7\u00e3o da DBPedia atrav\u00e9s de um programa em Python."
+        ],
+        "aulaId": "RPCW2024T2024-03-12"
+      },
+      {
+        "tipo": "TP",
+        "data": "2024-03-12",
+        "sumario": [
+          "Extra\u00e7\u00e3o de um dataset da DBPedia sobre modalidades desportivas e respetivos atletas.",
+          "TPC5: Cinema (colheita de um dataset da DBPedia)",
+          "- Filmes:",
+          "- Toda a informa\u00e7\u00e3o relacionada com o filme: t\u00edtulo, data de lan\u00e7amento, realiza\u00e7\u00e3o, produ\u00e7\u00e3o, elenco...",
+          "- Atores, Produtores, Escritores, M\u00fasicos:",
+          "- nome e outros dados pessoais, lista de filmes",
+          "- Outras categorias que achar interessantes."
+        ],
+        "aulaId": "RPCW2024TP2024-03-12"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-03-19",
+        "sumario": [
+          "Introdu\u00e7\u00e3o ao processamento de ontologias em Python com o RDFLib."
+        ],
+        "aulaId": "RPCW2024T2024-03-19"
+      },
+      {
+        "tipo": "TP",
+        "data": "2024-03-19",
+        "sumario": [
+          "Especifica\u00e7\u00e3o no Prot\u00e9g\u00e9 de uma ontologia sobre cinema (usando todo o conhecimento adquirido no TPC5.",
+          "Convers\u00e3o em Python usando o RDFLib de alguns indiv\u00edduos extra\u00eddos no TPC5 para a nova ontologia em TTL.",
+          "TPC6: Constru\u00e7\u00e3o de um megareposit\u00f3rio sobre cinema",
+          "1. Convers\u00e3o do dataset do TPC5 para o formato da nova ontologia;",
+          "2. Importa\u00e7\u00e3o do TTL obtido no [reposit\u00f3rio criado pelo docente](http://epl.di.uminho.pt:7200/repositories/cinema2024);",
+          "3. Cria\u00e7\u00e3o de um frontend web com o flask para explorar o reposit\u00f3rio."
+        ],
+        "aulaId": "RPCW2024TP2024-03-19"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-04-02",
+        "sumario": [
+          "Introdu\u00e7\u00e3o ao protocolo OAIpmh.",
+          "Harvesting de alguns reposit\u00f3rios.",
+          "Introdu\u00e7\u00e3o ao processamento de XML em Python."
+        ],
+        "aulaId": "RPCW2024T2024-04-02"
+      },
+      {
+        "tipo": "TP",
+        "data": "2024-04-02",
+        "sumario": [
+          "Harvesting do repositorium."
+        ],
+        "aulaId": "RPCW2024TP2024-04-02"
+      }
+    ],
+    "hTeoricas": [
+      "ter\u00e7a das 16h \u00e0s 17h, sala Ed.1 - 1.25"
+    ],
+    "hPraticas": [
+      "ter\u00e7a das 17h \u00e0s 19h, sala Ed.1 - 1.25"
+    ]
+  },
+  {
+    "_id": "ENGWEB2024",
+    "titulo": "Engenharia Web",
+    "docentes": [
+      "d0001",
+      "d0002"
+    ],
+    "avaliacao": [
+      "8 Trabalhos de casa (20%)",
+      "1 Projeto em grupo at\u00e9 3 elementos (35%)[nota m\u00ednima de 10 val.]",
+      "1 Teste escrito (45%)[nota m\u00ednima de 10 val.]"
+    ],
+    "datas": {
+      "teste": "???",
+      "exame": "???",
+      "projeto": "???"
+    },
+    "aulas": [
+      {
+        "tipo": "T",
+        "data": "2024-02-05",
+        "sumario": [
+          "Apresenta\u00e7\u00e3o da disciplina.",
+          "Introdu\u00e7\u00e3o ao HTML.",
+          "Introdu\u00e7\u00e3o ao CSS: o W3.css.",
+          "Breve introdu\u00e7\u00e3o \u00e0s linguagens de amota\u00e7\u00e3o: MD, CSV, JSON, XML, HTML.",
+          "Alguns exerc\u00edcios."
+        ],
+        "aulaId": "ENGWEB2024T2024-02-05"
+      },
+      {
+        "tipo": "P",
+        "data": "2024-02-05",
+        "sumario": [
+          "Cria\u00e7\u00e3o dum reposit\u00f3rio Git para a UC: EngWeb2024",
+          "Cria\u00e7\u00e3o de subpastas no reposit\u00f3rio: TPC1...TPC8, Teste e Projeto",
+          "Cria\u00e7\u00e3o de um README.md na pasta principal com: 1. Pequena introdu\u00e7\u00e3o textual; 2. Nome, id e foto do dono.",
+          "Acrescentar um README.md na pasta TPC1 com o manifesto do trabalho: T\u00edtulo/Descri\u00e7\u00e3o, Data de in\u00edcio e data de fim, Resumo do trabalho, Lista de resultados.",
+          "An\u00e1lise do dataset emd.json sobre Exames M\u00e9dicos Desportivos;",
+          "Definir a estrutura de um website de explora\u00e7\u00e3o do dataset: P\u00e1gina principal - lista de dados consult\u00e1veis; Listagem dos EMD: Data, nome, modalidade, resultado; Listagem das modalidades: lista alfab\u00e9tica de modalidades; Listagem dos clubes: ...",
+          "P\u00e1gina do EMD: p\u00e1gina com toda a informa\u00e7\u00e3o do EMD;",
+          "P\u00e1gina da modalidade: nome da modalidade e lista de EMD associados a essa modalidade;",
+          "P\u00e1gina do clube: idem...",
+          "Criar uma ou v\u00e1rias scripts em Python para gerar o website a partir do dataset.",
+          "TPC1: ",
+          "[No site da UC](https://epl.di.uminho.pt/~jcr/AULAS/EngWeb2024):",
+          "Descarregar o material: link do aviso da p\u00e1gina principal;",
+          "Construir um website com a lista das ruas na p\u00e1gina principal;",
+          "Cada alunos dever\u00e1 depois construir a p\u00e1gina de duas ruas \u00e0 escolha (pode fazer mais se quiser) e estas devem estar ligadas \u00e0 p\u00e1gina principal (devem incluir toda a informa\u00e7\u00e3o, fotos inclusive)."
+        ],
+        "aulaId": "ENGWEB2024P2024-02-05"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-02-19",
+        "sumario": [
+          "Introdu\u00e7\u00e3o \u00e0 cria\u00e7\u00e3o de API de dados.",
+          "O m\u00f3dulo [json-server](https://docs.google.com/presentation/d/1aOXUJdPVV0us7d0Ynd3dZkU-MY3Ndqo_fkNPL-sv_VU/edit?usp=sharing) e a sua utiliza\u00e7\u00e3o na constru\u00e7\u00e3o r\u00e1pida de API.",
+          "Introdu\u00e7\u00e3o \u00e0 [cria\u00e7\u00e3o de servi\u00e7os com o nodejs](https://docs.google.com/presentation/d/1wvMG2xCzzV_DOD6Z3sJ4BJtTXHUwY3I-USS_6-OEaQk/edit?usp=sharing)."
+        ],
+        "aulaId": "ENGWEB2024T2024-02-19"
+      },
+      {
+        "tipo": "P",
+        "data": "2024-02-19",
+        "sumario": [
+          ""
+        ],
+        "aulaId": "ENGWEB2024P2024-02-19"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-02-26",
+        "sumario": [
+          "[Tutorial](https://docs.google.com/presentation/d/1qXOXaIR_6MjjgsikXKYnu_0h4JE-ON5YcweAFwqsWAs/edit?usp=sharing) sobre o npm.",
+          "Exemplo: cria\u00e7\u00e3o de um servi\u00e7o sobre o dataset de alunos.",
+          "Utiliza\u00e7\u00e3o do m\u00f3dulo axios para fazer pedidos: GET, POST, PUT, DELETE.",
+          "Cria\u00e7\u00e3o de um servi\u00e7o sobre o dataset de alunos servido pelo json-server."
+        ],
+        "aulaId": "ENGWEB2024T2024-02-26"
+      },
+      {
+        "tipo": "P",
+        "data": "2024-02-26",
+        "sumario": [
+          "Implementa\u00e7\u00e3o do caso de estudo: [mordidas de animais no estado do Louisiana nos EUA](https://drive.google.com/file/d/1vzsYAVV0C_bpGYY0OUscP3_qzZCzUsug/view?usp=sharing).",
+          "1. Preparar o dataset para o json-server;",
+          "2. Colocar o json-server a servir as cole\u00e7\u00f5es;",
+          "3. Testar com alguns pedidos via browser ou Postman;",
+          "4. Criar um servi\u00e7o para servir a p\u00e1gina principal: /mordidas;",
+          "5. Criar um servi\u00e7o para servir as outras p\u00e1ginas: /mordidas/id;",
+          "6. Acrescentar estilo \u00e0s p\u00e1ginas com o w3.css e preparar o servi\u00e7o para servir a folha de estilo."
+        ],
+        "aulaId": "ENGWEB2024P2024-02-26"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-03-04",
+        "sumario": [
+          "[Tutorial](https://docs.google.com/presentation/d/1qXOXaIR_6MjjgsikXKYnu_0h4JE-ON5YcweAFwqsWAs/edit?usp=sharing) sobre o npm.",
+          "Fluxo das opera\u00e7\u00f5es de CRUD;",
+          "HTML Forms: estrutura, cria\u00e7\u00e3o;",
+          "Envio de informa\u00e7\u00e3o com HTML Forms: GET e POST;",
+          "Recupera\u00e7\u00e3o da informa\u00e7\u00e3o do body do pedido;",
+          "Tratamento de recursos est\u00e1ticos: detetar e servir.",
+          "Apresenta\u00e7\u00e3o de um exemplo."
+        ],
+        "aulaId": "ENGWEB2024T2024-03-04"
+      },
+      {
+        "tipo": "P",
+        "data": "2024-03-04",
+        "sumario": [
+          "Identifica\u00e7\u00e3o das p\u00e1ginas web que ir\u00e3o compor a App de gest\u00e3o de alunos da UC (opera\u00e7\u00f5es de CRUD): 1)Formul\u00e1rios de cria\u00e7\u00e3o e de altera\u00e7\u00e3o de aluno (Create e Update); 2) Formul\u00e1rio ou Bot\u00e3o para apagar aluno (Delete); 3) P\u00e1gina de Listagem  de alunos (Retrieve); 4) P\u00e1gina de Consulta de aluno (Retrieve).",
+          "Cria\u00e7\u00e3o dos formul\u00e1rios e das p\u00e1ginas de resposta a estes;",
+          "Criar um m\u00f3dulo templates.js com as templates das p\u00e1ginas;",
+          "Programa\u00e7\u00e3o do servi\u00e7o principal.",
+          "Material para a aula: [Esqueleto do servi\u00e7o](./semana4/alunos_server_skeleton.js), [M\u00f3dulo static](./semana4/static.js), [Pasta public](./semana4/public), [Templates das p\u00e1ginas HTML](./semana4/templates.js)."
+        ],
+        "aulaId": "ENGWEB2024P2024-03-04"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-03-18",
+        "sumario": [
+          "[Tutorial sobre MongoDB e a sua linguagem de query](https://docs.google.com/presentation/d/1uGek1QZNOiZFXamjNK_Fifrp-CK9MPe21jqpjtdqs-4/edit?usp=sharing);",
+          "Como montar uma API de dados sobre o MongoDB: ORM e mongoose."
+        ],
+        "aulaId": "ENGWEB2024T2024-03-18"
+      },
+      {
+        "tipo": "P",
+        "data": "2024-03-18",
+        "sumario": [
+          "Substitui\u00e7\u00e3o da API de dados montada com o json-server por uma API de dados contru\u00edda sobre o MongoDB: App de Gest\u00e3o de Alunos."
+        ],
+        "aulaId": "ENGWEB2024P2024-03-18"
+      },
+      {
+        "tipo": "P",
+        "data": "2024-04-02",
+        "sumario": [
+          "Continua\u00e7\u00e3o da aula anterior."
+        ],
+        "aulaId": "ENGWEB2024P2024-04-02"
+      },
+      {
+        "tipo": "T",
+        "data": "2024-04-08",
+        "sumario": [
+          "Introdu\u00e7\u00e3o \u00e0 programa\u00e7\u00e3o do lado do cliente;",
+          "A framework jQuery;",
+          "Apresenta\u00e7\u00e3o e an\u00e1lise de v\u00e1rios exemplos."
+        ],
+        "aulaId": "ENGWEB2024T2024-04-08"
+      },
+      {
+        "tipo": "P",
+        "data": "2024-04-08",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de uma ficha de aferi\u00e7\u00e3o."
+        ],
+        "aulaId": "ENGWEB2024P2024-04-08"
+      }
+    ],
+    "hTeoricas": [
+      "segunda das 14h \u00e0s 16h, sala Ed.2 - 0.05"
+    ],
+    "hPraticas": [
+      "Turno 1: segunda das 16h \u00e0s 18h, sala Ed.1 - 1.20",
+      "Turno 3: segunda das 16h \u00e0s 18h, sala Ed.1 - 2.25",
+      "Turno 2: ter\u00e7a das 13h \u00e0s 15h, sala Ed.1 - 2.17"
+    ]
+  },
+  {
+    "_id": "ATP2023",
+    "titulo": "Algoritmos e T\u00e9cnicas de Programa\u00e7\u00e3o",
+    "docentes": [
+      "d0001",
+      "d0003"
+    ],
+    "avaliacao": [
+      "8 Trabalhos de casa (20%)",
+      "1 Projeto em grupo at\u00e9 3 elementos (30%)[nota m\u00ednima de 10 val.]",
+      "1 Teste escrito (40%)[nota m\u00ednima de 10 val.]"
+    ],
+    "datas": {
+      "teste": "7 de Dezembro (17h-20h); salas Ed.2: 0.01 e 0.05",
+      "exame": "16 de Janeiro (14h-17h); sala Ed.2: 1.15",
+      "projeto": "primeira semana de Janeiro"
+    },
+    "aulas": [
+      {
+        "tipo": "T",
+        "data": "2023-09-14",
+        "sumario": [
+          "Apresenta\u00e7\u00e3o da disciplina."
+        ],
+        "aulaId": "ATP2023T2023-09-14"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-09-21",
+        "sumario": [
+          "Introdu\u00e7\u00e3o \u00e0 arquitetura dum computador: canais de entrada e sa\u00edda, unidade central de processamento e unidades de armazenamento.",
+          "Tipos de dados: inteiros e reais.",
+          "Opera\u00e7\u00f5es e operadores sobre tipos num\u00e9ricos.",
+          "Opera\u00e7\u00f5es de IO: input e print.",
+          "[Slides apresentados na aula.](./aulas-ex-feitos/ATP2023.pdf)"
+        ],
+        "aulaId": "ATP2023T2023-09-21"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-09-28",
+        "sumario": [
+          "Tipos de dados estruturados: listas e strings.",
+          "Principais m\u00e9todos e opera\u00e7\u00f5es.",
+          "[Notebook criado durante a aula.](./aulas-ex-feitos/AulaT3-20230928.ipynb.zip)"
+        ],
+        "aulaId": "ATP2023T2023-09-28"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-10-12",
+        "sumario": [
+          "Tipos de dados estruturados: listas e tuplos.",
+          "Principais m\u00e9todos e opera\u00e7\u00f5es.",
+          "Leitura e escrita de ficheiros.",
+          "[Notebook criado durante a aula.](./aulas-ex-feitos/AulaT4.zip)"
+        ],
+        "aulaId": "ATP2023T2023-10-12"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-10-19",
+        "sumario": [
+          "Tipos de dados estruturados: dicion\u00e1rios.",
+          "Principais m\u00e9todos e opera\u00e7\u00f5es.",
+          "Cria\u00e7\u00e3o de distribui\u00e7\u00f5es.",
+          "Cria\u00e7\u00e3o de gr\u00e1ficos com a biblioteca matplotlib.",
+          "[Notebook criado durante a aula.](./aulas-ex-feitos/AulaT5-20231019.ipynb.zip)"
+        ],
+        "aulaId": "ATP2023T2023-10-19"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-10-26",
+        "sumario": [
+          "Tipos de dados estruturados: dicion\u00e1rios e listas.",
+          "Processamento de datasets em ficheiro.",
+          "O formato JSON e a respetiva biblioteca Python.",
+          "Cria\u00e7\u00e3o de gr\u00e1ficos com a biblioteca matplotlib para distribui\u00e7\u00f5es.",
+          "[Notebook criado durante a aula.](./aulas-ex-feitos/AulaT6-20231026.ipynb.zip)",
+          "[Dataset dos EMD em JSON.](./aulas-ex-feitos/datasets/emd.json)",
+          "[Dataset dos EMD em CSV.](./aulas-ex-feitos/datasets/emd.csv)"
+        ],
+        "aulaId": "ATP2023T2023-10-26"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-11-02",
+        "sumario": [
+          "Introdu\u00e7\u00e3o \u00e0 especifica\u00e7\u00e3o de algoritmos recursivos: Fibonacci e Factorial.",
+          "Convers\u00e3o de algoritmos iterativos em recursivos e vice-versa."
+        ],
+        "aulaId": "ATP2023T2023-11-02"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-11-09",
+        "sumario": [
+          "Apresenta\u00e7\u00e3o do projeto e respetivo kit.",
+          "[Kit para o projeto.](./aulas-ex-feitos/projeto-2023.zip)",
+          "Desenvolvimento de uma aplica\u00e7\u00e3o para gerir uma pequena base de dados de EMD: 1) Opera\u00e7\u00f5es CRUD sobre o modelo; 2) C\u00e1lculo de algumas distribui\u00e7\u00f5es e sua visualiza\u00e7\u00e3o gr\u00e1fica, ... 3) Configura\u00e7\u00e3o e manipula\u00e7\u00e3o de gr\u00e1ficos com o matplotlib.",
+          "[Material base da aula.](./aulas-ex-feitos/AulaT8-20231109.ipynb.zip)"
+        ],
+        "aulaId": "ATP2023T2023-11-09"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-11-16",
+        "sumario": [
+          "Introdu\u00e7\u00e3o \u00e0 utiliza\u00e7\u00e3o de interfaces gr\u00e1ficas para programas em Python.",
+          "O m\u00f3dulo PySimpleGUI: estrutura, componentes dispon\u00edveis, modelo de comportamento.",
+          "[Material base da aula.](./aulas-ex-feitos/AulaT9-20231116.ipynb.zip)"
+        ],
+        "aulaId": "ATP2023T2023-11-16"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-09-11/12",
+        "sumario": [
+          "Instala\u00e7\u00e3o do ambiente de trabalho: VS Code, Python, ...",
+          "Resolu\u00e7\u00e3o de exerc\u00edcios com [programa\u00e7\u00e3o visual](https://blockly.games)."
+        ],
+        "aulaId": "ATP2023P2023-09-11/12"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-09-18/19",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios de programa\u00e7\u00e3o visual em Scratch 3.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP2-20230918.pdf).",
+          "[Explorando_o_Scratch_1.4](./aulas-ex-feitos/biblio/Explorando_o_Scratch_1.4_.pdf).",
+          "[Manual do Scratch](./aulas-ex-feitos/biblio/manual-scratch.pdf).",
+          "[Manual Apoio 1](./aulas-ex-feitos/biblio/ManualApoio1.pdf).",
+          "[Manual Apoio 2](./aulas-ex-feitos/biblio/ManualApoio2.pdf).",
+          "[Scratch3 Comunidad atenea](./aulas-ex-feitos/biblio/Scratch3-Comunidadatenea.pdf).",
+          "Algumas solu\u00e7\u00f5es do TP1: [Quadrado](./aulas-ex-feitos/P2-soluc\u0327o\u0303es/quadrado.sb3), [Poligono](./aulas-ex-feitos/P2-soluc\u0327o\u0303es/poligono.sb3), [Movimento](./aulas-ex-feitos/P2-soluc\u0327o\u0303es/movimento-sprite.sb3), [Par ou \u00cdmpar](./aulas-ex-feitos/P2-soluc\u0327o\u0303es/parOuImpar.sb3), [Divisores](./aulas-ex-feitos/P2-soluc\u0327o\u0303es/divisores.sb3)."
+        ],
+        "aulaId": "ATP2023P2023-09-18/19"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-09-25/26",
+        "sumario": [
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP3-20230925.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-09-25/26"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-10-02/03",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios sobre modela\u00e7\u00e3o e opera\u00e7\u00f5es com listas.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP4-20231002.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-10-02/03"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-10-09/10",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios sobre modela\u00e7\u00e3o e opera\u00e7\u00f5es com listas e listas de listas.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP5-20231009.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-10-09/10"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-10-16/17",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios sobre modela\u00e7\u00e3o e opera\u00e7\u00f5es sobre ficheiros, listas e tuplos.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP6-20231016.ipynb.zip).",
+          "[Dataset para o TPC](./aulas-ex-feitos/datasets/diabetes_prediction_dataset.csv.zip)."
+        ],
+        "aulaId": "ATP2023P2023-10-16/17"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-10-23/24",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios sobre modela\u00e7\u00e3o e opera\u00e7\u00f5es sobre ficheiros e estruturas de dados.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP7-20231023.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-10-23/24"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-10-30/31",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios visando a aferi\u00e7\u00e3o de conhecimentos.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP8-20231030.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-10-30/31"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-11-06/07",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios com algoritmos recursivos.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP9-20231106.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-11-06/07"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-11-13/14",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios com algoritmos sobre strings, listas e dicion\u00e1rios.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP10-20231113.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-11-13/14"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-11-20/21",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios com algoritmos sobre interfaces gr\u00e1ficas.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP11-20231120.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-11-20/21"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-11-23",
+        "sumario": [
+          "Alguns algoritmos envolvendo tipos estruturados de dados.",
+          "M\u00f3dulo OS e a manipula\u00e7\u00e3o do sistema de ficheiros a partir de uma aplica\u00e7\u00e3o.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaT10-20231123.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023T2023-11-23"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-11-27/28",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios com algoritmos cobrindo toda a mat\u00e9ria.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP12-20231127.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-11-27/28"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-11-30",
+        "sumario": [
+          "Fun\u00e7\u00f5es de ordem superior (FOS).",
+          "As fun\u00e7\u00f5es map, filter e reduce.",
+          "Introdu\u00e7\u00e3o \u00e0 constru\u00e7\u00e3o de catamorfismos: abstra\u00e7\u00e3o sobre o modelo.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaT11-20231130.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023T2023-11-30"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-12-04/05",
+        "sumario": [
+          "Resolu\u00e7\u00e3o de exerc\u00edcios com algoritmos cobrindo toda a mat\u00e9ria com particular incid\u00eancia em dicion\u00e1rios.",
+          "[Gui\u00e3o para a aula pr\u00e1tica](./aulas-ex-feitos/AulaP13-20231204.ipynb.zip)."
+        ],
+        "aulaId": "ATP2023P2023-12-04/05"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-12-07",
+        "sumario": [
+          "Teste de avalia\u00e7\u00e3o (17h-20h) nas salas do Ed.2: 0.01 e 0.05."
+        ],
+        "aulaId": "ATP2023T2023-12-07"
+      },
+      {
+        "tipo": "P",
+        "data": "2023-12-11/12",
+        "sumario": [
+          "Resolu\u00e7\u00e3o do teste de avalia\u00e7\u00e3o.",
+          "[Teste em PDF](./aulas-ex-feitos/atp2023-normal.pdf)."
+        ],
+        "aulaId": "ATP2023P2023-12-11/12"
+      },
+      {
+        "tipo": "T",
+        "data": "2023-12-14",
+        "sumario": [
+          "Classes, objetos e inst\u00e2ncias em Python.",
+          "Estrutura de uma classe: atributos e m\u00e9todos.",
+          "Constru\u00e7\u00e3o e visualiza\u00e7\u00e3o de classes.",
+          "Implementa\u00e7\u00e3o de alguns exemplos: stock e lista de compras."
+        ],
+        "aulaId": "ATP2023T2023-12-14"
+      }
+    ],
+    "hTeoricas": [
+      "quinta das 14h \u00e0s 16h, sala Ed.1 - 0.04"
+    ],
+    "hPraticas": [
+      "Turno 1: segunda das 14h \u00e0s 16h, sala Ed. 7 - 1.09",
+      "Turno 2: ter\u00e7a das 14h \u00e0s 16h, sala Ed. 7 - 1.09",
+      "Turno 3: ter\u00e7a das 16h \u00e0s 18h, sala Ed. 7 - 1.09"
+    ]
+  }
+]

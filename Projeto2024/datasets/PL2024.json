@@ -1,0 +1,34 @@
+{
+  "_id": "PL2024",
+  "titulo": "Processamento de Linguagens",
+  "docentes": [
+    "d0001"
+  ],
+  "hTeoricas": [
+    "sexta das 09h às 11h, sala Ed.1 - 0.08"
+  ],
+  "hPraticas": [
+    "terça das 09h às 11h, sala Ed.1 - 2.25"
+  ],
+  "avaliacao": [
+    "Teste(50%)"
+  ],
+  "datas": {
+    "teste": "24 de Maio",
+    "exame": "5 de Junho",
+    "projeto": "17 de Junho",
+    "_id": "66703313274da0dafbdb8da6"
+  },
+  "aulas": [
+    {
+      "tipo": "T",
+      "data": "2024-06-21",
+      "sumario": [
+        "Introdução Sobre Parsers RD",
+        "Introdução à AFD"
+      ],
+      "aulaId": "PL2024T2024-06-21",
+      "_id": "66703313274da0dafbdb8da7"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+extends layout
+
+block content
+  script.
+    var ucs = !{JSON.stringify(ucs)}
+    function refreshCursos(){
+      for (let i=0;i<ucs.length;i++){
+        id = "#curso" + i
+        $(id).show()
+      }
+    }
+    $(document).ready(function(){
+      $(".curso-box").on("click",function(){
+        $(this).find("a")[0].click()
+      })
+      $("#txtBusca").on("input",function(){
+        refreshCursos()
+        let str = $("#txtBusca").val().toLowerCase()
+        for (let i=0;i<ucs.length;i++){
+          id = `#curso${i} a p b`
+          if (!$(id).text().toLowerCase().includes(str)){
+            id = "#curso"+i
+            $(id).hide()
+          }
+        }
+      })
+      $("#novo-curso").on("click",function(){
+        $(".popup").toggleClass("popup-active")
+      })
+      $(".close-button").on("click",function(){
+        $(".popup").toggleClass("popup-active")
+      })
+      $("form").on("submit",function(){
+        event.preventDefault()
+        if ($('#uploadFile').get(0).files.length === 0) {
+          $("#missing-file").show()
+        }else{
+          this.submit()
+        }
+      })
+    })
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3 
+          a(href="/user")=utilizador.nome
+        h3#selected Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3 
+          a(href="/mensagens") Mensagens
+        h3 
+          a(href=`/ferramentas`) Ferramentas
+        h3 
+          a(href="/logout") Terminar Sessão
+    main#menu
+      #cursos-geral
+        #cursos-header
+          .inline-items
+            h1 Cursos
+            if utilizador.type == "admin" || utilizador.type == "produtor"
+              #novo-curso.confirm-button +
+
+          #divBusca
+            img(src='/images/lupa.png', alt='Procurar Curso...')
+            input#txtBusca(type='text', placeholder='Procurar Curso...')
+        #cursos-main
+          each uc,index in ucs 
+            div(id=`curso${index}` class="curso-box")
+              a.no-decoration(href=`/curso/${uc._id}`)
+                p 
+                  b 
+                    =uc.ano 
+                    =uc.sigla 
+                    =uc.titulo
+        #popup-background
+          .popup
+            .events-novo-curso
+              h4 Criar novo curso
+              form(action="/curso/new/json" method="POST" enctype="multipart/form-data")
+                div
+                  input(id="uploadFile" type="file" name="newUC" accept=".json")
+                div(id="missing-file" style="display: none; color:red;margin-top:10px;") Insira o Ficheiro!
+                div
+                  button(type="submit" class).novo-curso-button Novo Curso por Ficheiro
+              a.no-decoration(href="/curso/new").novo-curso-button Página de Criação Novo Curso
+              .close-button X
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  body.grid-container 
+    aside
+      img(src="/images/logo.png",width="150px")
+      .lateral
+        h3 
+          a(href="/user")=utilizador.nome
+        h3 
+          a(href="/cursos") Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3 
+          a(href="/mensagens") Mensagens
+        h3 
+          a(href=`/ferramentas`) Ferramentas
+        h3 
+          a(href="/logout") Terminar Sessão
+    main.menu
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

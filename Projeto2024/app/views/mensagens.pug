@@ -1,0 +1,102 @@
+extends layout
+
+block content
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  script.
+    function clear() {
+      $("#op1").removeClass("section-selected");
+      $("#op2").removeClass("section-selected");
+    }
+    $(document).ready(function(){
+      $("#info_id2").hide()
+      $("#op1").toggleClass("section-selected");
+      $("#op1").click(function(){
+        clear()
+        $("#op2").removeClass("section-selected");
+        $("#op1").toggleClass("section-selected");
+        $("#info_id2").hide()
+        $('#info_id1').show();
+      });
+      $("#op2").click(function(){
+        clear()
+        $("#op1").removeClass("section-selected");
+        $("#op2").toggleClass("section-selected");
+        $("#info_id1").hide()
+        $('#info_id2').show();
+      });
+      $("#new-message-button").on("click",function(){
+        $("#new-message")[0].click()
+      })
+    })
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3 
+          a(href="/user")=utilizador.nome
+        h3 
+          a(href="/cursos") Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3#selected  Mensagens
+        h3
+          a(href="/ferramentas") Ferramentas
+        h3 
+          a(href="/logout") Terminar Sessão
+    main#menu
+      #cursos-geral
+        #cursos-header
+          .inline-items
+            h1 Caixa de Entrada
+            #new-message-button.confirm-button
+              .fa.fa-envelope
+                a#new-message(href="/mensagens/new")
+        #curso-main
+          #selector
+            div(id="op1" class="section")
+              p Recebidas
+            div(id="op2" class="section")
+              p Enviadas
+          #folder
+            div(id="info_id1")
+              each m,index in messages 
+                .curso-box1
+                  p 
+                    b Remetente: 
+                    =m.remetente
+                    span 
+                      b Assunto: 
+                      =m.assunto
+                  label(for=`recebido${index}`)
+                    span.extra Conteúdo
+                  input.touch(type='checkbox', id=`recebido${index}`)
+                  .slide 
+                    p
+                      b Destinatário: 
+                      =m.destinatario
+                    p
+                      b Data: 
+                      =m.data
+                    p=m.conteudo
+            div(id="info_id2")
+              each m,index in sentMessages 
+                .curso-box
+                  p
+                    b Destinatário: 
+                    =m.destinatario
+                    span 
+                        b Assunto: 
+                        =m.assunto
+                  label(for=`enviado${index}`)
+                    span.extra Conteúdo
+                  input.touch(type='checkbox', id=`enviado${index}`)
+                  .slide 
+                    p
+                      b Data: 
+                      =m.data
+                    p=m.conteudo
+
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

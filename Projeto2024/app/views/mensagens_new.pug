@@ -1,0 +1,162 @@
+extends layout
+
+block content
+  script.
+    var utilizador = !{JSON.stringify(utilizador)}
+    var utilizadores = !{JSON.stringify(utilizadores)}
+    var destinatario = []
+    var tipo = "utilizador"
+    function clear(){
+      $("#utilizador-dest > span").each(function(){
+        let id = "#" + $(this).attr("id").replace("remover","")
+        $(id).show()
+        $(this).remove()
+      })
+      $("#grupo-dest > span").each(function(){
+        let id = "#" + $(this).attr("id").replace("remover","")
+        $(id).show()
+        $(this).remove()
+      })
+      destinatario = []
+    }
+    $(document).ready(function(){
+      $("#grupo-div").hide()
+      $(".escolher-grupo").on("click",function(){
+        clear()
+        $("#utilizador-div").hide()
+        $("#grupo-div").show()
+        tipo="grupo"
+        console.log(tipo)
+      })
+      $(".escolher-utilizador").on("click",function(){
+        clear()
+        $("#grupo-div").hide()
+        $("#utilizador-div").show()
+        tipo = "utilizador"
+        console.log(tipo)
+      })
+      $(".utilizador-disp").on("click",function(){
+        let id = $(this).attr("id")
+        destinatario.push(id)
+        $("#utilizador-dest").append(`<span id="remover${id}" class="remover"> ${id} </span>`)
+        $(this).hide()
+      })
+      $(".grupo-disp").on("click",function(){
+        let id = $(this).attr("id")
+        destinatario.push(id)
+        $("#grupo-dest").append(`<span id="remover${id}" class="remover"> ${id} </span>`)
+        $(this).hide()
+      })
+      $(this).on("click",".remover",function(){
+        let id = $(this).attr("id").replace("remover","")
+        $("#"+id).show()
+        $(this).remove()
+        const index = destinatario.indexOf(id)
+        destinatario.splice(index,1)
+      })
+      $(".procura-grupo").on("input",function(){
+        input = $(this).val().toLowerCase()
+        $(".scrollable-list > .grupo-disp").each(function (){
+          if ($(this).text().toLowerCase().includes(input)){
+            $(this).show()
+          }else{
+            $(this).hide()
+          }
+        })
+      })
+      $(".procura-utilizador").on("input",function(){
+        input = $(this).val().toLowerCase()
+        $(".scrollable-list > .utilizador-disp").each(function (){
+          if ($(this).text().toLowerCase().includes(input)){
+            $(this).show()
+          }else{
+            $(this).hide()
+          }
+        })
+      })
+      $("form").on("submit",function(){
+        event.preventDefault()
+        console.log(tipo)
+        if (destinatario.length > 0){
+          $('<input>').attr({
+              type: 'hidden',
+              name: 'tipo',
+              value: tipo
+          }).appendTo(this);
+          $('<input>').attr({
+              type: 'hidden',
+              name: 'remetente',
+              value: utilizador._id
+          }).appendTo(this);
+          $('<input>').attr({
+              type: 'hidden',
+              name: 'destinatario',
+              value: JSON.stringify(destinatario)
+          }).appendTo(this);
+          $('<input>').attr({
+              type: 'hidden',
+              name: 'data',
+              value: (new Date()).toISOString().substring(0,19)
+          }).appendTo(this);
+          this.submit()
+        }
+      })
+    })
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3 
+          a(href="/user")=utilizador.nome
+        h3 
+          a(href="/cursos") Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3#selected 
+          a(href="/mensagens") Mensagens
+        h3
+          a(href="/ferramentas") Ferramentas
+        h3 
+          a(href="/logout") Terminar Sessão
+    main#menu
+      #cursos-geral
+        #cursos-header
+          h1 Nova Mensagem
+        #cursos-main
+            #grupo-div.destinatario
+              h2#grupo-dest Destinatário:
+              #grupo.escolhido
+                h3 Grupo
+              #utilizador.escolher-utilizador
+                h3 Utilizadores 
+              #divBusca.procura
+                img(src='/images/lupa.png', alt='Procurar Grupo...')
+                input.procura-grupo#txtBusca(type='text', placeholder='Procurar Grupo...')
+              .container
+                ul.scrollable-list
+                  each grupo,i in utilizador.ucs
+                    li(id=grupo class="grupo-disp")=grupo
+            #utilizador-div.destinatario
+              h2#utilizador-dest Destinatário: 
+              #grupo.escolher-grupo
+                h3 Grupo
+              #utilizador.escolhido
+                h3 Utilizadores 
+              #divBusca.procura
+                img(src='/images/lupa.png', alt='Procurar Utilizador...')
+                input.procura-utilizador#txtBusca(type='text', placeholder='Procurar Utilizador...')
+              .container
+                ul.scrollable-list
+                  each utilizador,i in utilizadores
+                    li(id=utilizador._id class="utilizador-disp") #{utilizador._id} #{utilizador.nome}
+            form(method="POST" class="message-send-box")
+              h4 Assunto:
+              input(type="textarea" name="assunto" class="message-field assunto")
+              h4 Conteúdo:
+              textarea(type="textarea" name="conteudo" class="message-field")
+              div
+                button(type="submmit") Enviar
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

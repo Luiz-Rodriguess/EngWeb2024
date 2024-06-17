@@ -1,0 +1,178 @@
+extends layout
+
+block content
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  script.
+    var activePopup 
+    function clear() {
+      $("#op1").removeClass("section-selected");
+      $("#op2").removeClass("section-selected");
+      $("#op3").removeClass("section-selected");
+      $("#op4").removeClass("section-selected");
+      $("#op5").removeClass("section-selected");
+      $("#op6").removeClass("section-selected");
+      $('[id^=info_id]').hide();
+    }
+    $(document).ready(function(){
+      clear()
+      $("#op1").toggleClass("section-selected");
+      $('#info_id1').show();
+      $("#op1").click(function(){
+        clear()
+        $("#op1").toggleClass("section-selected");
+        $('#info_id1').show();
+      });
+      $("#op2").click(function(){
+        clear()
+        $("#op2").toggleClass("section-selected");
+        $('#info_id2').show();
+      });
+      $("#op3").click(function(){
+        clear()
+        $("#op3").toggleClass("section-selected");
+        $('#info_id3').show();
+      });
+      $("#op4").click(function(){
+        clear()
+        $("#op4").toggleClass("section-selected");
+        $('#info_id4').show();
+      });
+      $("#op5").click(function(){
+        clear()
+        $("#op5").toggleClass("section-selected");
+        $('#info_id5').show();
+      });
+      $("#op6").click(function(){
+        clear()
+        $("#op6").toggleClass("section-selected");
+        $('#info_id6').show();
+      });
+      $("#delete-curso").on("click",function(){
+        $(".popup").toggleClass("popup-active")
+      })
+      $("#cancel-option").on("click",function(){
+        $(".popup").toggleClass("popup-active")
+      })
+      $(".aulas").click(function(){
+        var id = "#popup-aula" + $(this).attr('id').replace(/[a-z]+/,"")
+        activePopup = id
+        $($(id).parent()).toggleClass("popup-active")
+      })
+      $(".popup").click(function(){
+        id = activePopup
+        $($(id).parent()).toggleClass("popup-active")
+      })
+    });
+
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3 
+          a(href="/user")=utilizador.nome
+        h3#selected
+          a(href="/cursos") Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3 
+          a(href="/mensagens") Mensagens
+        h3 
+          a(href=`/ferramentas`) Ferramentas
+        h3 
+          a(href=`/logout`) Terminar Sessão
+    main#menu
+      #cursos-geral
+        #cursos-header
+          .inline-items
+            h1=uc.titulo
+            .yellow-button
+              a(class="fa fa-download no-decoration" href=`/curso/download/${uc._id}`) 
+          if flag
+            .inline-items
+              a.no-decoration.confirm-button.flip-h(href=`/curso/edit/${uc._id}`) &#9998
+              #delete-curso.close-button
+                div(class="fa fa-trash-o no-decoration")
+        #curso-main
+          #selector
+            div(id="op1" class="section")
+              p Descrição
+            div(id="op2" class="section")
+              p Docentes
+            div(id="op3" class="section")
+              p Avaliação
+            div(id="op4" class="section")
+              p Datas
+            div(id="op5" class="section")
+              p Aulas
+            div(id="op6" class="section")
+              p Horários
+          #folder
+            div(id="info_id1" class="curso-box1")
+              p 
+                b Adicionar Informações à BD
+            div(id="info_id2" class="curso-box1")
+              for docente in docentes
+                p=docente.nome
+            div(id="info_id3" class="curso-box1")
+              ul
+                for line in uc.avaliacao
+                  li=line
+            div(id="info_id4" class="curso-box1")
+              p Teste: #{uc.datas.teste}
+              p Exame: #{uc.datas.exame}
+              p Projeto: #{uc.datas.projeto}
+            div(id="info_id5")
+              for aula,index in uc.aulas
+
+                div(id=`aula${index}` class="curso-box no-pointer")
+                  p 
+                    b Id: 
+                    =aula.aulaId
+                  p
+                    b Tipo: 
+                    =aula.tipo
+                  p
+                    b Data: 
+                    =aula.data
+                  label(for=`touch${index}`)
+                    span.extra Sumário
+                  input.touch(type='checkbox', id=`touch${index}`)
+                  .slide
+                    ul
+                      each s in aula.sumario
+                        li
+                          - let regex = /^(.*?\s*)(\[.*?\])\((https?:\/\/[^\s\)]+)\)/;
+                          - let match = s.match(regex);
+                          if(match)
+                            - let beforeBrackets = match[1].trim();
+                            - let textInBrackets = match[2].trim(); // Texto entre colchetes
+                            - let link = match[3]; // Link capturadotre colchetes
+                            - let afterLink = s.substring(match.index + match[0].length);
+                            =beforeBrackets
+                            a(href=link)= textInBrackets
+                            =afterLink
+                          else
+                            =s
+            div(id="info_id6" class="curso-box1")
+              h3 Teóricas
+              ul
+                for horario in uc.hTeoricas
+                  li=horario
+              h3 Práticas
+              ul
+                for horario in uc.hPraticas
+                  li=horario
+            #popup-background
+              .popup
+                .events-novo-curso
+                  h2 Deseja Apagar a UC?
+                  h4 (Ação irreversível)
+                  .inline-items
+                    #cancel-option.confirm-button(style="background-color:red; width:40px;") Não
+                    a.no-decoration.confirm-button(style="width:40px;" href=`/curso/delete/${uc._id}`) Sim
+                  
+
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues

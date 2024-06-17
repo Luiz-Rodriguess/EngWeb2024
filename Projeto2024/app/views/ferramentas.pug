@@ -1,0 +1,250 @@
+extends layout
+
+block content
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  script.
+    var ucs = !{JSON.stringify(ucs)}
+    var ucID 
+    var userList = []
+    var tipo
+
+    function clear(){
+      $("#cursos-div").hide()
+      $("#form-div").hide()
+      $("#add-user-div").hide()
+      $("#remove-user-div").hide()
+      $("#utilizador-file").hide()
+      $("#uc-file").hide()
+      $("#mensagem-file").hide()
+    }
+    $(document).ready(function(){
+      clear()
+      $("#add-user").on("click",function(){
+        $("#ferramentas-all").hide()
+        $("#cursos-div").show()
+        $("#cursos-header").html("<h1>Adicionar Utilizadores</h1>")
+        tipo = "addUtilizadores"
+      })
+      $("#remove-user").on("click",function(){
+        $("#ferramentas-all").hide()
+        $("#cursos-div").show()
+        $("#cursos-header").html("<h1>Remover Utilizadores</h1>")
+        tipo = "removeUtilizadores"
+      })
+      $("#export-users").on("click",function(){
+        $("#users-link")[0].click()
+      })
+      $("#export-ucs").on("click",function(){
+        $("#ucs-link")[0].click()
+      })
+      $("#export-mensagens").on("click",function(){
+        $("#mensagens-link")[0].click()
+      })
+      $("#delete-user").on("click",function(){
+        $("#user-link")[0].click()
+      })
+      $("#import-users").on("click",function(){
+        $("#ferramentas-all").hide()
+        $("#cursos-header").html("<h1>Adicionar Utilizadores</h1>")
+        $("#utilizador-file").show()
+      })
+      $("#import-ucs").on("click",function(){
+        $("#ferramentas-all").hide()
+        $("#cursos-header").html("<h1>Adicionar UCs</h1>")
+        $("#uc-file").show()
+      })
+      $("#import-mensagens").on("click",function(){
+        $("#ferramentas-all").hide()
+        $("#cursos-header").html("<h1>Adicionar Mensagens</h1>")
+        $("#mensagem-file").show()
+      })
+      $(".render-option").on("click",function(){
+        ucID = $(this).text()
+        $("#cursos-div").hide()
+        $("#cursos-header").append(`<h3>${ucID}</h3>`)
+        $("#form-div").show()
+        if (tipo === "addUtilizadores"){
+          $("#add-user-div").show()
+        }else if (tipo === "removeUtilizadores"){
+          $("#remove-user-div").show()
+        }
+      })
+      $(".add-user-info").on("click",function(){
+        input = "input[id=add-user-input]"
+        userID = $(input).val()
+        $(input).val("")
+        userList.push(userID)
+        console.log(userList)
+        $("#added-user").text(userID)
+      })
+      $(".remove-user-info").on("click",function(){
+        input = "input[id=remove-user-input]"
+        userID = $(input).val()
+        $(input).val("")
+        userList.push(userID)
+        console.log(userList)
+        $("#removed-user").text(userID)
+      })
+      $("form").on("submit",function(){
+        event.preventDefault()
+        if ($('#upload-file1').get(0).files.length === 0 &&
+            $('#upload-file2').get(0).files.length === 0 &&
+            $('#upload-file3').get(0).files.length === 0) {
+          $("#missing-file1").show()
+          $("#missing-file2").show()
+          $("#missing-file3").show()
+        }else {
+          $(this).find("input[name=utilizador]").remove()
+          $('<input>').attr({
+              type: 'hidden',
+              name: 'userList',
+              value: JSON.stringify(userList)
+          }).appendTo(this)
+          $('<input>').attr({
+              type: 'hidden',
+              name: 'tipo',
+              value: tipo
+          }).appendTo(this)
+          $('<input>').attr({
+              type: 'hidden',
+              name: 'ucID',
+              value: ucID
+          }).appendTo(this)
+          this.submit()
+        }
+      })
+    })
+  body.grid-container
+    aside
+      a(href="/main")
+        img(src="/images/logo.png",width="150px")
+      #lateral
+        h3 
+          a(href="/user")=utilizador.nome
+        h3 
+          a(href="/cursos") Cursos
+        h3
+          a(href="/calendario") Calendário
+        h3 
+          a(href="/mensagens") Mensagens
+        h3#selected 
+          a(href="/ferramentas") Ferramentas
+        h3 
+          a(href="/logout") Terminar Sessão
+    main#menu
+      #cursos-geral
+          #cursos-header
+            h1 Ferramentas 
+          #cursos-main
+            #ferramentas-all(style="margin-bottom: 30px;")
+              .inline-items
+                if ucs.length != 0
+                  #add-user.ferramenta
+                    .icon
+                      .fa.fa-user-plus
+                    p Adicionar Utilizador à UC
+                if ucs.length != 0
+                  #remove-user.ferramenta
+                    .icon
+                      .fa.fa-user-times
+                    p Remover Utilizador da UC
+                if utilizador.type === "admin"
+                  #import-users.ferramenta
+                    .icon
+                      .fa.fa-users
+                      .superscript
+                        .fa.fa-upload
+                    p Importar Utilizadores
+              .inline-items
+                #export-users.ferramenta
+                  .icon
+                    .fa.fa-users
+                    .superscript
+                      .fa.fa-download
+                  p Exportar Utilizadores
+                  a#users-link.no-decoration(href="users/download")
+                if utilizador.type === "admin"
+                  #import-ucs.ferramenta
+                    .icon
+                      .fa.fa-university
+                      .superscript
+                        .fa.fa-upload
+                    p Importar UCs
+                #export-ucs.ferramenta
+                  .icon
+                    .fa.fa-university
+                    .superscript
+                      .fa.fa-download
+                  p Exportar UCs
+                  a#ucs-link.no-decoration(href="cursos/download") 
+              .inline-items
+                if utilizador.type == "admin"
+                  #import-mensagens.ferramenta
+                    .icon
+                      .fa.fa-envelope
+                      .superscript
+                        .fa.fa-upload
+                    p Importar Mensagens
+                #export-mensagens.ferramenta
+                  .icon
+                    .fa.fa-envelope
+                    .superscript
+                      .fa.fa-download
+                  p Exportar Mensagens
+                a#mensagens-link.no-decoration(href="mensagens/download")
+                if utilizador.type == "admin"
+                  #delete-user.ferramenta
+                    .icon.cross.cross-1
+                      .fa.fa-user
+                    p Remover Utilizador
+                  a#user-link.no-decoration(href="user/delete") 
+            #cursos-div
+              each uc in ucs
+                .curso-box.render-option=uc._id
+            #form-div
+              form(method="POST")
+                #add-user-div.add-remove
+                  .inline-items
+                    label ID do utilizador
+                    input(id="add-user-input" type="text" name="utilizador")
+                    .confirm-button.add-user-info &#10003
+                  label.adicionado Utilizador Adicionado:
+                  p#added-user 
+                  button(type="submit") Atualizar
+                #remove-user-div.add-remove
+                  .inline-items
+                    label ID do utilizador
+                    input(id="remove-user-input" type="text" name="utilizador")
+                    .close-button.remove-user-info X
+                  label Utilizador Removido:
+                  p#removed-user 
+                  button(type="submit") Atualizar
+          
+            #utilizador-file.add-remove
+              h2 Insira o ficheiro
+              form(action="/users/new" method="POST" enctype="multipart/form-data" accept=".json")
+                div
+                  input(id="upload-file1" type="file" name="utilizadores")
+                div(id="missing-file1" style="display: none; color:red;margin-top:10px;") Insira o Ficheiro!
+                div
+                  button(style="margin-top:10px;" type="submit") Submeter
+            #uc-file.add-remove
+              h2 Insira o ficheiro
+              form(action="/cursos/new" method="POST" enctype="multipart/form-data" accept=".json")
+                div
+                  input(id="upload-file2" type="file" name="ucs")
+                div(id="missing-file2" style="display: none; color:red;margin-top:10px;") Insira o Ficheiro!
+                div
+                  button(style="margin-top:10px;" type="submit") Submeter
+            #mensagem-file.add-remove
+              h2 Insira o ficheiro
+              form(action="/mensagens/json" method="POST" enctype="multipart/form-data" accept=".json")
+                div
+                  input(id="upload-file3" type="file" name="mensagens")
+                div(id="missing-file3" style="display: none; color:red;margin-top:10px;") Insira o Ficheiro!
+                div
+                  button(style="margin-top:10px;" type="submit") Submeter
+            
+    footer
+      p Unidade Curricular: EngWeb 2023/24
+      p Realizado por: Marco António Pereira Vieira e Luiz Felipe Passanezi Matteussi Rodrigues
